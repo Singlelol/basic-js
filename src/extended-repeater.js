@@ -16,13 +16,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-  let string = str.toString();
+  let string = String(str);
   let result = '';
   let separator = "+";
   let repeatTimes = 1;
-  let addition = '|';
+  let addition = '';
   let additionRepeatTimes = 0;
-  let additionSeparator = '';
+  let additionSeparator = '|';
   if("repeatTimes" in options) {
     repeatTimes = options.repeatTimes
   }
@@ -33,7 +33,7 @@ function repeater(str, options) {
 
   if("addition" in options) {
     addition = options.addition
-    addition = addition.toString()
+    addition = String(addition);
     if("additionSeparator" in options) {
       additionSeparator = options.additionSeparator
     }
@@ -50,9 +50,9 @@ function repeater(str, options) {
     result = result.concat(string)
     for(let x = 0; x < additionRepeatTimes; x++) {
       if(x !== additionRepeatTimes - 1) {
-        result = result.concat(addition)
-      } else {
         result = result.concat(addition, additionSeparator)
+      } else {
+        result = result.concat(addition)
       }
     }
     if(i < repeatTimes - 1) {
